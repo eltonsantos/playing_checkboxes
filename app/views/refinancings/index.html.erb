@@ -44,7 +44,7 @@
       <tbody>
         <% @authorizations.each do |authorization| %>
           <tr>
-            <td><%= check_box_tag 'authorization_marked[]' %></td>
+            <td><%= check_box_tag 'authorization_marked' %></td>
             <td><%= authorization.contract_number %></td>
             <td><%= number_to_currency authorization.parcel_value %></td>
             <td><%= authorization.qtd_parcel %></td>
