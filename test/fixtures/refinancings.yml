@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: 1
+  authorization_id: 1
+  contract_number: MyString
+  situation: 1
+  total_value: 9.99
+  parcel_value: 9.99
+  qtd_parcel: 1
+  refinancing_date: 2016-04-10
+
+two:
+  employee_id: 1
+  authorization_id: 1
+  contract_number: MyString
+  situation: 1
+  total_value: 9.99
+  parcel_value: 9.99
+  qtd_parcel: 1
+  refinancing_date: 2016-04-10

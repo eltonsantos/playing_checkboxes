@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Get refinancing</h3>
+
+<%= form_tag(refinancings_path, name: 'form', :method => :get) do %>
+  <h4>Pesquisar Dados Pessoais</h4>
+  <div class="form-group">
+    <%= text_field_tag "search_employee_by_cpf", nil, placeholder: 'Digite CPF', class: 'form-control mascara-cpf', id: 'search_cpf' %>
+  </div>
+  <%= submit_tag "Search", :class => 'btn btn-default' %>
+<% end %>
+<br />
+<hr />
+
+<% if params[:search_employee_by_cpf].present? %>
+<h4><b>Results</b></h4>
+
+  <% @employees.each do |employee| %>
+    <table class="table table-condensed">
+      <tr>
+        <th>Name</th>
+        <td><%= employee.person.name %></td>
+      </tr>
+      <tr>
+        <th>Matrícula</th>
+        <td><%= employee.register %></td>
+      </tr>
+      <tr>
+        <th>CPF</th>
+        <td><%= employee.person.cpf %></td>
+      </tr>
+    </table>
+
+    <hr />
+
+    <table class="table table-condensed table-bordered table-hover">
+      <thead>
+        <th>&nbsp;</th>
+        <th>Contract number</th>
+        <th>Value of parcel</th>
+        <th>Qtd of parcel</th>
+        <th>Total Value</th>
+      </thead>
+      <tbody>
+        <% @authorizations.each do |authorization| %>
+          <tr>
+            <td><%= check_box_tag 'authorization_marked[]' %></td>
+            <td><%= authorization.contract_number %></td>
+            <td><%= number_to_currency authorization.parcel_value %></td>
+            <td><%= authorization.qtd_parcel %></td>
+            <td><%= number_to_currency authorization.total_value %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  <% end %>
+
+  <%= link_to 'Reserve', new_refinancing_path(:search_employee_by_cpf => params[:search_employee_by_cpf]), :class => 'btn btn-primary btn-reserva' %>
+
+<% end %>

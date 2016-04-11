@@ -1,0 +1,18 @@
+<%= simple_form_for(@refinancing) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :employee_id %>
+    <%= f.input :authorization_id %>
+    <%= f.input :contract_number %>
+    <%= f.input :situation %>
+    <%= f.input :total_value %>
+    <%= f.input :parcel_value %>
+    <%= f.input :qtd_parcel %>
+    <%= f.input :refinancing_date %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

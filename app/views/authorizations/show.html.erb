@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @authorization.employee_id %>
+</p>
+
+<p>
+  <strong>Contract number:</strong>
+  <%= @authorization.contract_number %>
+</p>
+
+<p>
+  <strong>Situation:</strong>
+  <%= @authorization.situation %>
+</p>
+
+<p>
+  <strong>Total value:</strong>
+  <%= @authorization.total_value %>
+</p>
+
+<p>
+  <strong>Parcel value:</strong>
+  <%= @authorization.parcel_value %>
+</p>
+
+<p>
+  <strong>Qtd parcel:</strong>
+  <%= @authorization.qtd_parcel %>
+</p>
+
+<%= link_to 'Edit', edit_authorization_path(@authorization) %> |
+<%= link_to 'Back', authorizations_path %>

@@ -1,0 +1,48 @@
+<h3>Reserve of refinancing</h3>
+
+<table class="table table-condensed table-bordered">
+  <tr>
+    <td>Name:</td>
+    <td><%= @employee.first.person.name %></td>
+  </tr>
+  <tr>
+    <td>CPF:</td>
+    <td><%= @employee.first.person.cpf %></td>
+  </tr>
+</table>
+
+<hr />
+
+<%= simple_form_for(@refinancing) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.hidden_field :employee_id, value: @employee.first.id %>
+    <%= f.input :contract_number %>
+    <%= f.input :total_value %>
+    <%= f.input :parcel_value %>
+    <%= f.input :qtd_parcel %>
+  </div>
+
+  <hr />
+
+  <h3>Reserved value</h3>
+  <table class="table table-condensed table-bordered table-striped">
+    <thead>
+      <th>Contract number</th>
+      <th>Parcel value X Quantity of Parcels</th>
+    </thead>
+    <% @authorizations.each do |authorization| %>
+      <tbody>
+        <tr>
+          <td><%= authorization.contract_number %></td>
+          <td><%= number_to_currency authorization.parcel_value %> x <%= authorization.qtd_parcel %></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+
+  <div class="form-actions">
+    <%= f.button :submit, "To Reserve" %>
+  </div>
+<% end %>

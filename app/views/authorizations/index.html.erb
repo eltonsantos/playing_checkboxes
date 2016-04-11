@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<%= form_tag(authorizations_path, :method => :get) do %>
+  <div class="form-group">
+    <%= text_field_tag "search_employee_by_cpf", nil, placeholder: 'Search by CPF', class: 'form-control mascara-cpf' %><br>
+  </div>
+  <%= submit_tag "Search", :class => 'btn btn-default' %>
+<% end %>
+
+<hr />
+
+<h1>Listing Authorizations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Employee</th>
+      <th>Contract number</th>
+      <th>Situation</th>
+      <th>Total value</th>
+      <th>Parcel value</th>
+      <th>Qtd parcel</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @authorizations.each do |authorization| %>
+      <tr>
+        <td><%= authorization.employee_id %></td>
+        <td><%= authorization.contract_number %></td>
+        <td><%= authorization.situation %></td>
+        <td><%= authorization.total_value %></td>
+        <td><%= authorization.parcel_value %></td>
+        <td><%= authorization.qtd_parcel %></td>
+        <td><%= link_to 'Show', authorization %></td>
+        <td><%= link_to 'Edit', edit_authorization_path(authorization) %></td>
+        <td><%= link_to 'Destroy', authorization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,15 @@
+<%= simple_form_for(@authorization) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.hidden_field :employee_id, value: params[:employee_id] %>
+    <%= f.input :contract_number %>
+    <%= f.input :total_value %>
+    <%= f.input :parcel_value %>
+    <%= f.input :qtd_parcel %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,0 +1,35 @@
+<h3>Get Loan</h3>
+
+<%= form_tag(loans_index_path, name: 'form', :method => :get) do %>
+  <h4>Search</h4>
+  <div class="form-group">
+    <%= text_field_tag "search_cpf", nil, placeholder: 'CPF', class: 'form-control mascara-cpf', id: 'search_cpf' %>
+  </div>
+  <%= submit_tag "Search", :class => 'btn btn-default' %>
+<% end %>
+<br>
+
+<hr />
+
+<h4><b>Results</b></h4>
+<div class="table-responsive">
+  <table class="table table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Person</th>
+        <th>CPF</th>
+        <th colspan="1">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @employees.each do |employee| %>
+        <tr>
+          <td><%= employee.person.name %></td>
+          <td><%= employee.person.cpf %></td>
+          <td><%= employee.register %></td>
+          <td><%= link_to "Get Loan", new_authorization_path(employee_id: employee.id, employee_name: employee.person.name, employee_cpf: employee.person.cpf, employee_register: employee.register), method: :get, class: 'btn btn-default' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
