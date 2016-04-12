@@ -1,3 +1,19 @@
 <%= link_to 'Refinancing', refinancings_path, :class => 'btn btn-info btn-refinanciamentos' %>
 <br /><br />
 <%= link_to 'Get Loan', loans_index_path, :class => 'btn btn-primary btn-emprestimos' %>
+
+
+<hr/>
+
+<% unless @selected_ids.blank? %>
+  <h2>Selected Contracts</h2>
+  <p>IDs: <%= @selected_ids %></p>
+  <hr/>
+  <% @authorizations.each do |authorization| %>
+    <p>Contract number: <%= authorization.contract_number %></p>
+    <p>Parcel: <%= number_to_currency authorization.parcel_value %></p>
+    <p>Quantity parcel: <%= authorization.qtd_parcel %></p>
+    <p>Total Value: <%= number_to_currency authorization.total_value %></p>
+    <hr/>
+  <% end %>
+<% end %>

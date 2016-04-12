@@ -20,7 +20,6 @@ class RefinancingsController < ApplicationController
   # GET /refinancings/new
   def new
     @employee = Employee.search_cpf(params[:search_employee_by_cpf])
-    @authorizations.authorization_marked = true
     @refinancing = Refinancing.new
   end
 
