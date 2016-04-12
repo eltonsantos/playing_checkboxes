@@ -5,7 +5,7 @@ class RefinancingsController < ApplicationController
   def index
     if params[:search_employee_by_cpf].present?
       @employees = Employee.search_cpf(params[:search_employee_by_cpf]).all
-      @authorizations = Authorization.search_employee_by_cpf(params[:search_employee_by_cpf]).all
+      @authorizations = Authorization.search_employee_by_cpf(params[:search_employee_by_cpf]).where(employee_id: employee.id)
 
 
     else
