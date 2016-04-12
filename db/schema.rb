@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20160410054511) do
     t.decimal  "total_value"
     t.decimal  "parcel_value"
     t.integer  "qtd_parcel"
+    t.decimal  "value_solve"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

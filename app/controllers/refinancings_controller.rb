@@ -6,6 +6,8 @@ class RefinancingsController < ApplicationController
     if params[:search_employee_by_cpf].present?
       @employees = Employee.search_cpf(params[:search_employee_by_cpf]).all
       @authorizations = Authorization.search_employee_by_cpf(params[:search_employee_by_cpf]).all
+
+
     else
       @authorizations = []
     end
@@ -24,7 +26,6 @@ class RefinancingsController < ApplicationController
       @selected_ids = params[:authorization][:contract_ids]
       @authorizations = Authorization.where("contract_number in (?)", @selected_ids)
     end
-
     @employee = Employee.search_cpf(params[:search_employee_by_cpf])
     @refinancing = Refinancing.new
   end
@@ -49,6 +50,6 @@ class RefinancingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def refinancing_params
-      params.require(:refinancing).permit(:employee_id, :authorization_id, :contract_number, :situation, :total_value, :parcel_value, :qtd_parcel, :refinancing_date)
+      params.require(:refinancing).permit(:employee_id, :authorization_id, :contract_number, :situation, :total_value, :parcel_value, :qtd_parcel, :refinancing_date, :value_solve)
     end
 end

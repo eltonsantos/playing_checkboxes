@@ -7,6 +7,7 @@ class CreateAuthorizations < ActiveRecord::Migration
       t.decimal :total_value
       t.decimal :parcel_value
       t.integer :qtd_parcel
+      t.decimal :value_solve
 
       t.timestamps null: false
     end

@@ -16,6 +16,7 @@
 <h4><b>Results</b></h4>
 
   <%= form_tag(new_refinancing_path, name: 'form', method: :get) do %>
+    <%= hidden_field_tag 'search_employee_by_cpf', params[:search_employee_by_cpf] %>
     <% @employees.each do |employee| %>
       <table class="table table-condensed">
         <tr>
@@ -41,6 +42,7 @@
           <th>Value of parcel</th>
           <th>Qtd of parcel</th>
           <th>Total Value</th>
+          <th>Value to Solve</th>
         </thead>
         <tbody>
           <% @authorizations.each do |authorization| %>
@@ -50,6 +52,12 @@
               <td><%= number_to_currency authorization.parcel_value %></td>
               <td><%= authorization.qtd_parcel %></td>
               <td><%= number_to_currency authorization.total_value %></td>
+              <td>
+                <%= simple_form_for('/', remote: true) do |f| %>
+                  <%= f.input :value_solve, label: false, placeholder: "Digit a value" %>
+                  <%= f.submit 'Gravar valor' %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
