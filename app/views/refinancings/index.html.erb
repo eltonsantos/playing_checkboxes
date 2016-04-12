@@ -15,7 +15,7 @@
 <% if params[:search_employee_by_cpf].present? %>
 <h4><b>Results</b></h4>
 
-  <%= form_tag("/", name: 'form', method: :get) do %>
+  <%= form_tag(new_refinancing_path, name: 'form', method: :get) do %>
     <% @employees.each do |employee| %>
       <table class="table table-condensed">
         <tr>
