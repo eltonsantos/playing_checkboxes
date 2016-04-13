@@ -13,8 +13,7 @@
 <hr />
 
 <% if params[:search_employee_by_cpf].present? %>
-<h4><b>Results</b></h4>
-
+  <h4><b>Results</b></h4>
   <%= form_tag(new_refinancing_path, name: 'form', method: :get) do %>
     <%= hidden_field_tag 'search_employee_by_cpf', params[:search_employee_by_cpf] %>
     <% @employees.each do |employee| %>
