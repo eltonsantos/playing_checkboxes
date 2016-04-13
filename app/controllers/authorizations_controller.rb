@@ -73,6 +73,6 @@ class AuthorizationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def authorization_params
-      params.require(:authorization).permit(:employee_id, :contract_number, :situation, :total_value, :parcel_value, :qtd_parcel)
+      params.require(:authorization).permit(:employee_id, :contract_number, :situation, :total_value, :parcel_value, :qtd_parcel, :value_solve)
     end
 end

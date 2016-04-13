@@ -52,9 +52,8 @@
               <td><%= authorization.qtd_parcel %></td>
               <td><%= number_to_currency authorization.total_value %></td>
               <td>
-                <%= simple_form_for('/', remote: true) do |f| %>
+                <%= simple_fields_for :authorization do |f| %>
                   <%= f.input :value_solve, label: false, placeholder: "Digit a value" %>
-                  <%= f.submit 'Gravar valor' %>
                 <% end %>
               </td>
             </tr>
