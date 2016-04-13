@@ -4,10 +4,9 @@ class RefinancingsController < ApplicationController
   # GET /refinancings.json
   def index
     if params[:search_employee_by_cpf].present?
-      @employees = Employee.search_cpf(params[:search_employee_by_cpf]).all
-      @authorizations = Authorization.search_employee_by_cpf(params[:search_employee_by_cpf]).where(employee_id: employee.id)
-
-
+      @employees = Employee.search_cpf(params[:search_employee_by_cpf]).includes(:authorizations)
+      #@employees = Employee.search_cpf(params[:search_employee_by_cpf]).all
+      #@authorizations = Authorization.search_employee_by_cpf(params[:search_employee_by_cpf]).all
     else
       @authorizations = []
     end
@@ -21,7 +20,6 @@ class RefinancingsController < ApplicationController
 
   # GET /refinancings/new
   def new
-
     if params[:authorization]
       @selected_ids = params[:authorization][:contract_ids]
       @authorizations = Authorization.where("contract_number in (?)", @selected_ids)
