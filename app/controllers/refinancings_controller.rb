@@ -27,7 +27,10 @@ class RefinancingsController < ApplicationController
     end
     @employee = Employee.search_cpf(params[:search_employee_by_cpf])
     @refinancing = Refinancing.new
-    @refinancing.build_authorization
+    # @refinancing.build_authorization
+    params[:authorization][:contract_ids].each_with_index do |index, id|
+      Authorization.find(id).update_column(value_solve: params[:authorization][:value_solve])
+    end
   end
 
   # POST /refinancings

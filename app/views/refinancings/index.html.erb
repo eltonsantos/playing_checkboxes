@@ -52,9 +52,7 @@
               <td><%= authorization.qtd_parcel %></td>
               <td><%= number_to_currency authorization.total_value %></td>
               <td>
-                <%= simple_fields_for :authorization do |f| %>
-                  <%= f.input :value_solve, label: false, placeholder: "Digit a value" %>
-                <% end %>
+                <input class="string required" placeholder="Digit a value" type="text" name="authorization[value_solve][]" id="authorization_value_solve">
               </td>
             </tr>
           <% end %>
