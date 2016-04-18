@@ -5,7 +5,6 @@ class RefinancingsController < ApplicationController
   def index
     if params[:search_employee_by_cpf].present?
       @employees = Employee.search_cpf(params[:search_employee_by_cpf]).includes(:authorizations)
-
       #@employees = Employee.search_cpf(params[:search_employee_by_cpf]).all
       #@authorizations = Authorization.search_employee_by_cpf(params[:search_employee_by_cpf]).all
     else
@@ -22,9 +21,9 @@ class RefinancingsController < ApplicationController
   # GET /refinancings/new
   def new
     if params[:authorization].present?
-      @selected_ids = params[:authorization][:contract_ids]
+      @selected_ids = params[:authorization][:contract_number]
       @authorizations = Authorization.where("contract_number in (?)", @selected_ids)
-      Authorization.where(id: params[:authorization][:contract_ids]).update_all(value_solve: params[:authorization][:value_solve], situation: 2)
+      Authorization.where(id: params[:authorization][:id]).update_all(value_solve: params[:authorization][:value_solve], situation: 2)
     end
     @employee = Employee.search_cpf(params[:search_employee_by_cpf])
     @refinancing = Refinancing.new
