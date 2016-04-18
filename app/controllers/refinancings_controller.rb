@@ -21,9 +21,10 @@ class RefinancingsController < ApplicationController
 
   # GET /refinancings/new
   def new
-    if params[:authorization]
+    if params[:authorization].present?
       @selected_ids = params[:authorization][:contract_ids]
       @authorizations = Authorization.where("contract_number in (?)", @selected_ids)
+      Authorization.where(id: params[:authorization][:contract_ids]).update_all(value_solve: params[:authorization][:value_solve], situation: 2)
     end
     @employee = Employee.search_cpf(params[:search_employee_by_cpf])
     @refinancing = Refinancing.new
@@ -34,8 +35,7 @@ class RefinancingsController < ApplicationController
     #params[:authorization][:contract_ids].each do |id|
     #  Authorization.find(id).update_column(value_solve: params[:authorization][:value_solve])
     #end
-
-    Authorization.where(id: params[:authorization][:contract_ids]).update_all(value_solve: [:authorization][:value_solve])
+    #Authorization.where(id: params[:authorization]['contract_ids']).update_all(value_solve: params[:authorization]['value_solve'], situation: 2)
   end
 
   # POST /refinancings
