@@ -18,10 +18,27 @@ class RefinancingsController < ApplicationController
       @selected_ids = params[:authorization][:contract_number]
       # Get all authorizations checked
       @authorizations = Authorization.where("contract_number in (?)", @selected_ids)
-      @selected_ids.each do |s|
-        Authorization.where(contract_number: s).update_all(value_solve: params[:authorization][:value_solve].reject(&:blank?), situation: 2)
+
+      puts "-----"
+      puts params[:authorization][:contract_number]
+      puts "-----"
+
+      @selected_ids.zip(params[:authorization][:contract_number]).each do |id, value|
+        Authorization.where(contract_number: params[:authorization][:contract_number]).update_all(value_solve: params[:authorization][:value_solve], situation: 2)
       end
+
+      #auth_params = params[:authorization]
+      #auth_params[:contract_number].zip(auth_params[:value_solve]).each do |contract_number, value_solve|
+      #    Authorization.where(contract_number: contract_number).update_all(value_solve: value_solve, situation: 2)
+      #end
+
       #Authorization.where(contract_number: @selected_ids).update_all(value_solve: params[:authorization][:value_solve].reject(&:blank?), situation: 2)
+
+      #@selected_ids.each do |contract_number, index|
+      #  value_solve = params[:authorization][:value_solve]
+      #  Authorization.where(contract_number: params[:authorization][:contract_number]).update_all(value_solve: value_solve, situation: 2)
+      #end
+
     end
     @employee = Employee.search_cpf(params[:search_employee_by_cpf])
     @refinancing = Refinancing.new
