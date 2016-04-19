@@ -46,7 +46,6 @@
         <tbody>
           <% employee.authorizations.each do |authorization| %>
             <tr>
-              <td><%= hidden_field_tag :authorization_id, authorization.id %></td>
               <td><%= check_box_tag 'authorization[contract_number][]', authorization.contract_number %></td>
               <td><%= authorization.contract_number %></td>
               <td><%= number_to_currency authorization.parcel_value %></td>
