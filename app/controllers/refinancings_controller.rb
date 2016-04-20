@@ -13,18 +13,20 @@ class RefinancingsController < ApplicationController
   end
 
   def new
+    # Show authorizations
     if params[:authorization].present?
       # Get contract_number checked
       @selected_ids = params[:authorization][:contract_number]
       # Get all authorizations checked
       @authorizations = Authorization.where("contract_number in (?)", @selected_ids)
-
+      # Get the enter values for each contract numbers checked
       auth_params = params[:authorization]
       auth_params[:contract_number].zip(auth_params[:value_solve].reject(&:blank?)).each do |contract_number, value_solve|
           Authorization.where(contract_number: contract_number).update_all(value_solve: value_solve, situation: 2)
       end
 
     end
+    # Get CPF of employee
     @employee = Employee.search_cpf(params[:search_employee_by_cpf])
     @refinancing = Refinancing.new
   end
