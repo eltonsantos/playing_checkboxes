@@ -8,10 +8,6 @@ class RefinancingsController < ApplicationController
     end
   end
 
-  def show
-    @refinancing = Refinancing.find(params[:id])
-  end
-
   def new
     # Show authorizations
     if params[:authorization].present?
@@ -25,10 +21,17 @@ class RefinancingsController < ApplicationController
           Authorization.where(contract_number: contract_number).update_all(value_solve: value_solve, situation: 2)
       end
 
+      puts "----"
+      puts "----"
+      auth_params.each do
+        @historic_refinancing = HistoricRefinancing.create
+      end
+
     end
     # Get CPF of employee
     @employee = Employee.search_cpf(params[:search_employee_by_cpf])
     @refinancing = Refinancing.new
+
   end
 
   def create
@@ -43,6 +46,10 @@ class RefinancingsController < ApplicationController
         format.json { render json: @refinancing.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def show
+    @refinancing = Refinancing.find(params[:id])
   end
 
   private

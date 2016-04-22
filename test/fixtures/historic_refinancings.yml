@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  authorization_origin_id: 1
+  refinancing_id: 1
+  authorization_new_id: 1
+
+two:
+  authorization_origin_id: 1
+  refinancing_id: 1
+  authorization_new_id: 1

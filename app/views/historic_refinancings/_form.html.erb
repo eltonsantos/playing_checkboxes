@@ -1,0 +1,13 @@
+<%= simple_form_for(@historic_refinancing) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :authorization_origin_id %>
+    <%= f.input :refinancing_id %>
+    <%= f.input :authorization_new_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

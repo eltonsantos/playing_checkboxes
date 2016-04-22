@@ -29,12 +29,14 @@
   <h3>Reserved value</h3>
   <table class="table table-condensed table-bordered table-striped">
     <thead>
+      <th>Authorization id</th>
       <th>Contract number</th>
       <th>Parcel value X Quantity of Parcels</th>
     </thead>
     <% @authorizations.each do |authorization| %>
       <tbody>
         <tr>
+          <td><%= authorization.id %></td>
           <td><%= authorization.contract_number %></td>
           <td><%= number_to_currency authorization.parcel_value %> x <%= authorization.qtd_parcel %></td>
         </tr>

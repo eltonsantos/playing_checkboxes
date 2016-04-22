@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160410054511) do
+ActiveRecord::Schema.define(version: 20160422182946) do
 
   create_table "authorizations", force: :cascade do |t|
     t.integer  "employee_id"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 20160410054511) do
     t.decimal  "salary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "historic_refinancings", force: :cascade do |t|
+    t.integer  "authorization_origin_id"
+    t.integer  "refinancing_id"
+    t.integer  "authorization_new_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "people", force: :cascade do |t|

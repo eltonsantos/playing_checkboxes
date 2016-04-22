@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Historic Refinancings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Authorization origin</th>
+      <th>Refinancing</th>
+      <th>Authorization new</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @historic_refinancings.each do |historic_refinancing| %>
+      <tr>
+        <td><%= historic_refinancing.authorization_origin_id %></td>
+        <td><%= historic_refinancing.refinancing_id %></td>
+        <td><%= historic_refinancing.authorization_new_id %></td>
+        <td><%= link_to 'Show', historic_refinancing %></td>
+        <td><%= link_to 'Edit', edit_historic_refinancing_path(historic_refinancing) %></td>
+        <td><%= link_to 'Destroy', historic_refinancing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Historic refinancing', new_historic_refinancing_path %>

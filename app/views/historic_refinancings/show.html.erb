@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Authorization origin:</strong>
+  <%= @historic_refinancing.authorization_origin_id %>
+</p>
+
+<p>
+  <strong>Refinancing:</strong>
+  <%= @historic_refinancing.refinancing_id %>
+</p>
+
+<p>
+  <strong>Authorization new:</strong>
+  <%= @historic_refinancing.authorization_new_id %>
+</p>
+
+<%= link_to 'Edit', edit_historic_refinancing_path(@historic_refinancing) %> |
+<%= link_to 'Back', historic_refinancings_path %>

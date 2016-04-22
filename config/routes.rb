@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :historic_refinancings
   get 'home/index'
   get 'loans/index'
 
