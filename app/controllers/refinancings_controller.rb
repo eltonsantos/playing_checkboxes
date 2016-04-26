@@ -22,9 +22,14 @@ class RefinancingsController < ApplicationController
       end
 
       puts "----"
+      puts "authorization.ids: #{@authorizations.ids}"
       puts "----"
-      auth_params.each do
-        @historic_refinancing = HistoricRefinancing.create
+      @authorizations.ids.each do |auth_id|
+        puts "-----"
+        puts "auth_id: #{auth_id}"
+        puts "-----"
+        @historic_refinancing = HistoricRefinancing.create(authorization_origin_id: auth_id)
+        #@historic_refinancing = HistoricRefinancing.where(authorization_origin_id: auth_id).update_all(authorization_origin_id: auth_id)
       end
 
     end
@@ -46,6 +51,9 @@ class RefinancingsController < ApplicationController
         format.json { render json: @refinancing.errors, status: :unprocessable_entity }
       end
     end
+
+    HistoricRefinancing.where(refinancing_id: nil).update_all(refinancing_id: @refinancing)
+
   end
 
   def show
