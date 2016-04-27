@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'loans/index'
 
-  resources :refinancings
+  resources :refinancings do
+    get 'annotation'
+  end
+
   resources :authorizations
   resources :employees
   resources :people

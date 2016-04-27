@@ -60,6 +60,19 @@ class RefinancingsController < ApplicationController
     @refinancing = Refinancing.find(params[:id])
   end
 
+  def annotation
+    #Authorization.update_all(situation: 3)
+
+    @new_authorization = Authorization.create(situation: 0)
+    #@new_authorization.parcel_value = self.parcel_value
+    #@new_authorization.qtd_parcel = self.qtd_parcel
+    #@new_authorization.total_value = self.total_value
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
     def refinancing_params

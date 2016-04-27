@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<div class="message"></div>
 
 <p>
   <strong>Name:</strong>
@@ -34,5 +34,8 @@
   <strong>Qtd parcel:</strong>
   <%= @refinancing.qtd_parcel %>
 </p>
+
+<%= link_to 'Cancel', :back %>
+<%= link_to "Annotation", refinancing_annotation_path(@refinancing), remote: true %>
 
 <%= console %>

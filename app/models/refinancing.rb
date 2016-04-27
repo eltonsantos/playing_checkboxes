@@ -6,7 +6,7 @@ class Refinancing < ActiveRecord::Base
 
   accepts_nested_attributes_for :authorization
 
-  enum situation: [:reserved, :endorsed, :canceled]
+  enum situation: [:reserved, :annotation, :canceled]
 
   def create
     self.situation ||= 0
